@@ -1,0 +1,934 @@
+```html
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Nguyễn Phúc Điền | Giới thiệu bản thân</title>
+
+    <meta name="description"
+          content="Trang web giới thiệu bản thân của Nguyễn Phúc Điền">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            line-height: 1.7;
+            color: #333;
+            background: #f5f7fa;
+        }
+
+        /* =========================
+           THANH ĐIỀU HƯỚNG
+        ========================== */
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+            z-index: 1000;
+        }
+
+        nav {
+            max-width: 1100px;
+            margin: auto;
+            padding: 15px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 21px;
+            font-weight: 700;
+            color: #294c60;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #444;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #557b8d;
+        }
+
+        /* =========================
+           PHẦN GIỚI THIỆU
+        ========================== */
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 120px 20px 70px;
+
+            background:
+                linear-gradient(
+                    rgba(245, 247, 250, 0.92),
+                    rgba(235, 242, 245, 0.95)
+                );
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .avatar {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 25px;
+
+            border-radius: 50%;
+            background: #dbe7ec;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            font-size: 55px;
+            font-weight: 700;
+            color: #426579;
+
+            border: 6px solid white;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        .hero h1 {
+            font-size: 45px;
+            color: #294c60;
+            margin-bottom: 10px;
+        }
+
+        .hero h2 {
+            font-size: 20px;
+            font-weight: 400;
+            color: #687980;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            max-width: 650px;
+            margin: auto;
+            color: #59666c;
+        }
+
+        .button {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 11px 25px;
+            border-radius: 25px;
+
+            text-decoration: none;
+            color: white;
+            background: #426579;
+
+            transition: 0.3s;
+        }
+
+        .button:hover {
+            background: #294c60;
+            transform: translateY(-2px);
+        }
+
+        /* =========================
+           CẤU TRÚC CHUNG
+        ========================== */
+
+        section {
+            padding: 80px 20px;
+        }
+
+        .container {
+            max-width: 1050px;
+            margin: auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .section-title h2 {
+            font-size: 31px;
+            color: #294c60;
+            margin-bottom: 8px;
+        }
+
+        .section-title p {
+            color: #7b878c;
+        }
+
+        /* =========================
+           THÔNG TIN CÁ NHÂN
+        ========================== */
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .info-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
+            border-left: 4px solid #7897a5;
+        }
+
+        .info-card h3 {
+            color: #426579;
+            margin-bottom: 8px;
+            font-size: 18px;
+        }
+
+        .info-card p {
+            color: #5e686d;
+        }
+
+        /* =========================
+           HỌC TẬP
+        ========================== */
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: 18px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #c8d6dc;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 55px;
+            margin-bottom: 35px;
+        }
+
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: 9px;
+            top: 7px;
+            width: 18px;
+            height: 18px;
+            background: #557b8d;
+            border-radius: 50%;
+            border: 4px solid #edf3f5;
+        }
+
+        .timeline-item h3 {
+            color: #294c60;
+            margin-bottom: 5px;
+        }
+
+        .timeline-item p {
+            color: #667277;
+        }
+
+        /* =========================
+           KỸ NĂNG
+        ========================== */
+
+        .skills {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .skill-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        .skill-card h3 {
+            color: #426579;
+            margin-bottom: 10px;
+        }
+
+        .skill-card p {
+            color: #667277;
+        }
+
+        /* =========================
+           KINH NGHIỆM
+        ========================== */
+
+        .experience {
+            background: #edf3f5;
+        }
+
+        .experience-box {
+            max-width: 850px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 14px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        .experience-box h3 {
+            color: #294c60;
+            margin-bottom: 15px;
+        }
+
+        .experience-box ul {
+            padding-left: 22px;
+        }
+
+        .experience-box li {
+            margin-bottom: 9px;
+            color: #5e686d;
+        }
+
+        /* =========================
+           SỞ THÍCH
+        ========================== */
+
+        .hobbies {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .hobby {
+            background: white;
+            padding: 30px 20px;
+            text-align: center;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
+
+            transition: 0.3s;
+        }
+
+        .hobby:hover {
+            transform: translateY(-5px);
+        }
+
+        .hobby .icon {
+            font-size: 38px;
+            margin-bottom: 10px;
+        }
+
+        .hobby h3 {
+            color: #426579;
+        }
+
+        /* =========================
+           THÀNH TÍCH
+        ========================== */
+
+        .achievement {
+            background: #edf3f5;
+        }
+
+        .achievement-box {
+            max-width: 850px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 14px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        .achievement-box ul {
+            padding-left: 22px;
+        }
+
+        .achievement-box li {
+            margin-bottom: 12px;
+            color: #5e686d;
+        }
+
+        /* =========================
+           LIÊN HỆ
+        ========================== */
+
+        .contact {
+            text-align: center;
+        }
+
+        .contact p {
+            color: #657177;
+            margin-bottom: 10px;
+        }
+
+        /* =========================
+           FOOTER
+        ========================== */
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            background: #294c60;
+            color: white;
+            font-size: 14px;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================== */
+
+        @media (max-width: 768px) {
+
+            nav {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            nav ul {
+                gap: 12px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 34px;
+            }
+
+            .info-grid,
+            .skills {
+                grid-template-columns: 1fr;
+            }
+
+            .hobbies {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 60px 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- =========================
+     THANH ĐIỀU HƯỚNG
+========================== -->
+
+<header>
+    <nav>
+        <div class="logo">Nguyễn Phúc Điền</div>
+
+        <ul>
+            <li><a href="#gioi-thieu">Giới thiệu</a></li>
+            <li><a href="#hoc-tap">Học tập</a></li>
+            <li><a href="#ky-nang">Kỹ năng</a></li>
+            <li><a href="#kinh-nghiem">Kinh nghiệm</a></li>
+            <li><a href="#so-thich">Sở thích</a></li>
+            <li><a href="#thanh-tich">Thành tích</a></li>
+        </ul>
+    </nav>
+</header>
+
+
+<!-- =========================
+     GIỚI THIỆU
+========================== -->
+
+<section class="hero" id="gioi-thieu">
+
+    <div class="hero-content">
+
+        <div class="avatar">
+            NPĐ
+        </div>
+
+        <h1>Nguyễn Phúc Điền</h1>
+
+        <h2>Sinh viên – Cần Thơ, Việt Nam</h2>
+
+        <p>
+            Xin chào! Mình là Nguyễn Phúc Điền.
+            Đây là trang web nhỏ giới thiệu về bản thân,
+            quá trình học tập, những kỹ năng và sở thích
+            của mình.
+        </p>
+
+        <a href="#thong-tin" class="button">
+            Xem thông tin
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     THÔNG TIN CÁ NHÂN
+========================== -->
+
+<section id="thong-tin">
+
+    <div class="container">
+
+        <div class="section-title">
+            <h2>Thông tin cá nhân</h2>
+            <p>Một vài thông tin cơ bản về bản thân</p>
+        </div>
+
+        <div class="info-grid">
+
+            <div class="info-card">
+                <h3>Họ và tên</h3>
+                <p>Nguyễn Phúc Điền</p>
+            </div>
+
+            <div class="info-card">
+                <h3>Ngày sinh</h3>
+                <p>15/12/2008</p>
+            </div>
+
+            <div class="info-card">
+                <h3>Địa chỉ</h3>
+                <p>Thành phố Cần Thơ, Việt Nam</p>
+            </div>
+
+            <div class="info-card">
+                <h3>Tính cách</h3>
+                <p>
+                    Khá hướng nội, thích làm việc trong môi trường
+                    yên tĩnh và thường cố gắng hoàn thành công việc
+                    được giao một cách nghiêm túc.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     QUÁ TRÌNH HỌC TẬP
+========================== -->
+
+<section id="hoc-tap">
+
+    <div class="container">
+
+        <div class="section-title">
+            <h2>Quá trình học tập</h2>
+            <p>Những ngôi trường đã gắn bó trong quá trình học tập</p>
+        </div>
+
+        <div class="timeline">
+
+            <div class="timeline-item">
+
+                <h3>Tiểu học</h3>
+
+                <p>
+                    Trường Tiểu học Tân Lộc 3.
+                </p>
+
+                <p>
+                    Đây là giai đoạn mình bắt đầu hình thành
+                    những thói quen học tập và sinh hoạt cơ bản.
+                </p>
+
+            </div>
+
+
+            <div class="timeline-item">
+
+                <h3>Trung học cơ sở</h3>
+
+                <p>
+                    Trường THCS và THPT Tân Lộc.
+                </p>
+
+                <p>
+                    Trong thời gian học THCS, mình có cơ hội tham gia
+                    các hoạt động học tập và làm việc nhóm cùng bạn bè.
+                </p>
+
+            </div>
+
+
+            <div class="timeline-item">
+
+                <h3>Trung học phổ thông</h3>
+
+                <p>
+                    Trường THCS và THPT Tân Lộc.
+                </p>
+
+                <p>
+                    Tiếp tục học tập và rèn luyện các kỹ năng cá nhân,
+                    đặc biệt là khả năng phối hợp và hoàn thành công việc
+                    theo nhóm.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     LĨNH VỰC & KỸ NĂNG
+========================== -->
+
+<section id="ky-nang">
+
+    <div class="container">
+
+        <div class="section-title">
+            <h2>Lĩnh vực & kỹ năng</h2>
+
+            <p>
+                Những kỹ năng mình đang có và tiếp tục cải thiện
+            </p>
+        </div>
+
+
+        <div class="skills">
+
+            <div class="skill-card">
+
+                <h3>💻 Tin học cơ bản</h3>
+
+                <p>
+                    Có khả năng sử dụng máy tính và các công cụ
+                    học tập trực tuyến ở mức cơ bản. Mình đang
+                    tiếp tục tìm hiểu thêm về lập trình và phát triển
+                    kỹ năng công nghệ.
+                </p>
+
+            </div>
+
+
+            <div class="skill-card">
+
+                <h3>👥 Làm việc nhóm</h3>
+
+                <p>
+                    Có kinh nghiệm phối hợp với các thành viên,
+                    phân chia công việc và theo dõi tiến độ khi
+                    thực hiện các bài tập hoặc hoạt động nhóm.
+                </p>
+
+            </div>
+
+
+            <div class="skill-card">
+
+                <h3>🎤 Thuyết trình</h3>
+
+                <p>
+                    Có thể trình bày nội dung trước nhóm hoặc lớp
+                    ở mức cơ bản và đang cố gắng cải thiện khả năng
+                    diễn đạt, trình bày ý tưởng.
+                </p>
+
+            </div>
+
+
+            <div class="skill-card">
+
+                <h3>🎨 Vẽ</h3>
+
+                <p>
+                    Có một chút hứng thú và khả năng về vẽ,
+                    chủ yếu phục vụ cho sở thích cá nhân và
+                    những hoạt động đơn giản.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     KINH NGHIỆM
+========================== -->
+
+<section class="experience" id="kinh-nghiem">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <h2>Kinh nghiệm</h2>
+
+            <p>
+                Một số trải nghiệm trong quá trình học tập
+            </p>
+
+        </div>
+
+
+        <div class="experience-box">
+
+            <h3>Kinh nghiệm làm nhóm trưởng</h3>
+
+            <p>
+                Trong khoảng 5 năm học ở cấp THCS và THPT,
+                mình có nhiều lần đảm nhận vai trò nhóm trưởng
+                trong các hoạt động học tập.
+            </p>
+
+            <br>
+
+            <ul>
+
+                <li>
+                    Phân chia công việc phù hợp cho các thành viên.
+                </li>
+
+                <li>
+                    Theo dõi và nhắc nhở tiến độ thực hiện công việc.
+                </li>
+
+                <li>
+                    Trao đổi với các thành viên để thống nhất
+                    cách thực hiện bài tập.
+                </li>
+
+                <li>
+                    Hỗ trợ tổng hợp nội dung trước khi hoàn thành
+                    sản phẩm nhóm.
+                </li>
+
+                <li>
+                    Tham gia thuyết trình khi cần thiết.
+                </li>
+
+            </ul>
+
+            <br>
+
+            <p>
+                Những trải nghiệm này giúp mình có thêm kinh nghiệm
+                trong việc phối hợp với người khác và chịu trách nhiệm
+                với phần công việc được giao.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     SỞ THÍCH
+========================== -->
+
+<section id="so-thich">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <h2>Sở thích</h2>
+
+            <p>
+                Một vài hoạt động mình thường dành thời gian
+                khi rảnh
+            </p>
+
+        </div>
+
+
+        <div class="hobbies">
+
+            <div class="hobby">
+
+                <div class="icon">🎮</div>
+
+                <h3>Chơi game</h3>
+
+                <p>
+                    Giúp mình giải trí và thư giãn sau thời gian
+                    học tập.
+                </p>
+
+            </div>
+
+
+            <div class="hobby">
+
+                <div class="icon">🎧</div>
+
+                <h3>Nghe nhạc</h3>
+
+                <p>
+                    Thường nghe nhạc vào thời gian rảnh,
+                    đặc biệt khi nghỉ ngơi hoặc làm những công việc
+                    cá nhân.
+                </p>
+
+            </div>
+
+
+            <div class="hobby">
+
+                <div class="icon">🎬</div>
+
+                <h3>Xem phim</h3>
+
+                <p>
+                    Thích xem phim để giải trí và tìm hiểu thêm
+                    những câu chuyện, nhân vật và cách xây dựng
+                    nội dung khác nhau.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     THÀNH TÍCH
+========================== -->
+
+<section class="achievement" id="thanh-tich">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <h2>Thành tích & hoạt động</h2>
+
+            <p>
+                Một số kết quả và hoạt động trong quá trình học tập
+            </p>
+
+        </div>
+
+
+        <div class="achievement-box">
+
+            <ul>
+
+                <li>
+                    Duy trì kết quả học tập tương đối tốt trong
+                    quá trình học.
+                </li>
+
+                <li>
+                    Có ý thức hoàn thành các nhiệm vụ học tập
+                    được giao.
+                </li>
+
+                <li>
+                    Tham gia đầy đủ các hoạt động và phong trào
+                    do nhà trường tổ chức trong khả năng của bản thân.
+                </li>
+
+                <li>
+                    Có nhiều lần tham gia làm việc nhóm và đảm nhận
+                    vai trò nhóm trưởng trong các hoạt động học tập.
+                </li>
+
+                <li>
+                    Chủ động rèn luyện thêm các kỹ năng như làm việc
+                    nhóm, thuyết trình và sử dụng công nghệ.
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     LỜI KẾT
+========================== -->
+
+<section class="contact">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <h2>Đôi lời về bản thân</h2>
+
+        </div>
+
+        <p>
+            Mình vẫn đang trong quá trình học tập và hoàn thiện
+            các kỹ năng của bản thân.
+        </p>
+
+        <p>
+            Mục tiêu của mình là từng bước cải thiện kiến thức,
+            kỹ năng làm việc và sự tự tin để có thể đáp ứng tốt
+            hơn với việc học tập cũng như công việc trong tương lai.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================== -->
+
+<footer>
+
+    © 2026 Nguyễn Phúc Điền
+
+    <br>
+
+    Trang web giới thiệu bản thân cá nhân
+
+</footer>
+
+
+</body>
+</html>
+```
